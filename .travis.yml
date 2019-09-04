@@ -85,7 +85,7 @@ script:
     else
       cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
       make -j$(nproc)
-      make DESTDIR=appdir -j$(nproc) install ; find appdir/
+      make DESTDIR=appdir -j$(nproc) install
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       # FIXME: The following reshuffling can be removed once https://github.com/aardappel/treesheets/issues/133 is resolved
@@ -104,6 +104,7 @@ script:
       mv appdir/usr/images appdir/usr/bin/ # FIXME
       mkdir -p appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
       cp appdir/usr/bin/images/treesheets.svg appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
+      find appdir/
       ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh TreeSheets*.AppImage*  
