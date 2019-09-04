@@ -1,9 +1,9 @@
 # Add [ci skip] to the commit message to prevent test execution
 # whitelist
 branches:
-  only:
-    - master
-    - testing
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
 
 notifications:
   slack:
