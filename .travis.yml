@@ -96,8 +96,8 @@ script:
       mv appdir/usr/examples appdir/usr/bin/ # FIXME
       mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/translations appdir/usr/bin/ # FIXME
-      file appdir/usr/treeshets ###################################
-      mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
+      file TS/treesheets ###################################
+      cp TS/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/scripts appdir/usr/bin/ # FIXME
       mv appdir/usr/images appdir/usr/bin/ # FIXME
       mkdir -p appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
