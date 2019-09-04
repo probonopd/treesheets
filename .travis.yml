@@ -100,6 +100,7 @@ script:
       mv appdir/usr/translations appdir/usr/bin/ # FIXME
       strip TS/treesheets # FIXME
       cp TS/treesheets appdir/usr/bin/ # FIXME
+      ls -lh appdir/usr/bin/treesheets && chmod a+x appdir/usr/bin/treesheets
       mv appdir/usr/scripts appdir/usr/bin/ # FIXME
       mv appdir/usr/images appdir/usr/bin/ # FIXME
       mkdir -p appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
