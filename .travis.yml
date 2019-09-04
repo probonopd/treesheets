@@ -105,7 +105,7 @@ script:
       mkdir -p appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
       cp appdir/usr/bin/images/treesheets.svg appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
       find appdir/
-      ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
+      ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage -verbose=2
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh TreeSheets*.AppImage*  
     fi
