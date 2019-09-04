@@ -79,8 +79,20 @@ install:
     fi
 
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      xcodebuild -project osx/TreeSheets/TreeSheets.xcodeproj ;
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      xcodebuild -project osx/TreeSheets/TreeSheets.xcodeproj
     else
-      cmake . && make -j 4;
+      cmake . && make -j 4
+      make DESTDIR=appdir -j$(nproc) install ; find appdir/
+      wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+      chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+      ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
+      wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+      bash upload.sh APPNAME*.AppImage*  
     fi
+
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
