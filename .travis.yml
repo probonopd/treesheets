@@ -88,7 +88,18 @@ script:
       make DESTDIR=appdir -j$(nproc) install ; find appdir/
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+      # FIXME: The following reshuffling can be removed once https://github.com/aardappel/treesheets/issues/133 is resolved
+      mkdir -p appdir/usr/share/applications # FIXME
+      mv appdir/usr/treesheets.desktop appdir/usr/share/applications/ # FIXME
+      mkdir -p appdir/usr/bin/ # FIXME
+      mv appdir/usr/docs appdir/usr/bin/ # FIXME
+      mv appdir/usr/examples appdir/usr/bin/ # FIXME
+      mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
+      mv appdir/usr/translations appdir/usr/bin/ # FIXME
+      mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
+      mv appdir/usr/scripts appdir/usr/bin/ # FIXME
+      mv appdir/usr/images appdir/usr/bin/ # FIXME
       ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-      bash upload.sh APPNAME*.AppImage*  
+      bash upload.sh TreeSheets*.AppImage*  
     fi
