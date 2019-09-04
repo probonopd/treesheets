@@ -96,9 +96,12 @@ script:
       mv appdir/usr/examples appdir/usr/bin/ # FIXME
       mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/translations appdir/usr/bin/ # FIXME
+      file appdir/usr/treeshets ###################################
       mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/scripts appdir/usr/bin/ # FIXME
       mv appdir/usr/images appdir/usr/bin/ # FIXME
+      mkdir -p appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
+      cp appdir/usr/bin/images/treesheets.svg appdir/usr/share/icons/hicolor/scalable/apps/ # FIXME
       ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh TreeSheets*.AppImage*  
