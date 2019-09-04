@@ -91,12 +91,14 @@ script:
       # FIXME: The following reshuffling can be removed once https://github.com/aardappel/treesheets/issues/133 is resolved
       mkdir -p appdir/usr/share/applications # FIXME
       mv appdir/usr/treesheets.desktop appdir/usr/share/applications/ # FIXME
+      sed -i -e 's|^Exec=.*|Exec=treesheets|g' appdir/usr/share/applications/treesheets.desktop
+      sed -i -e 's|^Icon=.*|Icon=treesheets|g' appdir/usr/share/applications/treesheets.desktop
       mkdir -p appdir/usr/bin/ # FIXME
       mv appdir/usr/docs appdir/usr/bin/ # FIXME
       mv appdir/usr/examples appdir/usr/bin/ # FIXME
       mv appdir/usr/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/translations appdir/usr/bin/ # FIXME
-      file TS/treesheets ###################################
+      strip TS/treesheets # FIXME
       cp TS/treesheets appdir/usr/bin/ # FIXME
       mv appdir/usr/scripts appdir/usr/bin/ # FIXME
       mv appdir/usr/images appdir/usr/bin/ # FIXME
